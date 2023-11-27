@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Options</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1 id="header"></h1>
+  <label for="language-select" id="label-language-select"></label>
+  <select id="language-select">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+    <option value="de">Deutsch</option>
+    <option value="fr">Français</option>
+    <option value="it">Italiano</option>
+  </select>
+
+  <label for="agent" id="label-agent"></label>
+  <select id="agent">
+    <option value="CSS">CSSBuy</option>
+  </select>
+  <br/>
+  <br/>
+  <label for="promotion_code" id="label-promo-code"></label>
+  <br/>
+  <label for="how_to_get_promotion_code" id="label-how-to-get-promo-code"></label>
+  <a href="https://www.cssbuy.com/?go=m&name=promote" target="_blank">https://www.cssbuy.com/?go=promote</a>
+  <input type="text" id="promotion_code" placeholder="Promotion Code" />
+  
+  <button id="save-button">Save</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

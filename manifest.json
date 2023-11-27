@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Yupoo Helper",
+  "version": "1.0",
+  "permissions": ["storage"],
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["*://*.x.yupoo.com/*"],
+      "js": ["popup.js", "content.js"]
+    }
+  ],
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["/lang/*.json", "icon.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
