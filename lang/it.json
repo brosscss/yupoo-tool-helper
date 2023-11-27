@@ -1,0 +1,9 @@
+{
+    "title": "Opzioni di Estensione",
+    "header": "Configurazione",
+    "label_language": "Scegli la tua lingua",
+    "label_agent": "Scegli il tuo agente preferito",
+    "label_promo_code": "Inserisci qui il tuo codice promozionale, esempio: 45cdbf838f12bf6c",
+    "label_how_to_get_promo_code": "Clicca qui per ottenere il tuo codice promozionale (devi essere loggato nel tuo account)",
+    "save_button": "Salva"
+}

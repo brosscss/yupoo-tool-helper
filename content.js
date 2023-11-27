@@ -4,6 +4,13 @@ const main = async () => {
         let elements = document.querySelectorAll('.showalbumheader__gallerysubtitle');
         const cssbuy_promo_url = transformLink(elements[0].querySelector('a').getAttribute('href'), promotion_code);
         elements.forEach((element) => {
+                let links = element.querySelectorAll('a');
+                links.forEach((link) => {
+                    if (link.getAttribute('href').includes('wegobuy') || link.getAttribute('href').includes('pandabuy') || link.getAttribute('href').includes('sugargoo')) {
+                        link.remove();
+                    }
+                });
+    
                 let new_link = document.createElement('a');
                 new_link.setAttribute('rel', 'nofollow noopener');
                 new_link.setAttribute('href', cssbuy_promo_url); 
@@ -27,7 +34,6 @@ const main = async () => {
             shareModalCopy.setAttribute('id', 'get_css_promo_code');
             shareModalCopy.setAttribute('style', 'display: block; margin-top: 20px; margin-bottom: 20px; margin-left: 5px; margin-right: 5px;');
             shareModalCopy.textContent = 'Copy your cssbuy promo code url';
-
             shareModalCopy.addEventListener('click', () => {
                 navigator.clipboard.writeText(cssbuy_promo_url);
                 setTimeout(() => {
@@ -42,8 +48,6 @@ const main = async () => {
             element.appendChild(shareModalCopy);
             
         });
-            
-
     });
 
 }
@@ -54,7 +58,41 @@ const transformLink = (link, promotion_code) => {
     if (!link) {
         return link;
     }
+
+    switch (link.split('/')[2]) {
+        case 'item.taobao.com':
+            return transformTaobaoLink(link, promotion_code);
+        case 'detail.1688.com':
+            return transform1688Link(link, promotion_code);
+        case 'weidian.com':
+            return transformWeidianLink(link, promotion_code);
+        default:
+            return link;
+    }
+}
+
+const transformTaobaoLink = (link, promotion_code) => {
     let id = link.split('id=')[1];
+    let transormed_link = "https://cssbuy.com/";
+    if (id) {
+        transormed_link = `https://cssbuy.com/item-${id}.html?promotionCode=${promotion_code}`;
+    }
+
+    return transormed_link;
+}
+
+const transform1688Link = (link, promotion_code) => {
+    let id = link.split('offer/')[1].split('.html')[0];
+    let transormed_link = "https://cssbuy.com/";
+    if (id) {
+        transormed_link = `https://cssbuy.com/item-${id}.html?promotionCode=${promotion_code}`;
+    }
+
+    return transormed_link;
+}
+
+const transformWeidianLink = (link, promotion_code) => {
+    let id = link.split('item.html?itemID=')[1];
     let transormed_link = "https://cssbuy.com/";
     if (id) {
         transormed_link = `https://cssbuy.com/item-${id}.html?promotionCode=${promotion_code}`;

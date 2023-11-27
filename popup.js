@@ -1,6 +1,6 @@
 let userLanguage = getPreferredLanguage();
 const languageSelect = document.getElementById('language-select');
-
+const saveButton = document.getElementById('save-button');
 
 function getPreferredLanguage() {
   return chrome.storage.sync.get('language', (data) => {
@@ -10,7 +10,6 @@ function getPreferredLanguage() {
     } 
   }) || 'en';
 }
-
 
 function loadLanguage(lang) {
   const url = chrome.runtime.getURL(`/lang/${lang}.json`);
@@ -28,23 +27,27 @@ function loadLanguage(lang) {
   .catch(console.error);
 }
 
-document.getElementById('save-button').addEventListener('click', () => {
-  const agent = document.getElementById('agent').value;
-  const promotion_code = document.getElementById('promotion_code').value;
-  userLanguage = languageSelect.value;
-  languageSelect.value = userLanguage;
-  chrome.storage.sync.set({agent: agent, promotion_code: promotion_code, language: userLanguage}, () => {
-      chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-      chrome.tabs.reload(tabs[0].id);
-      });
+if(saveButton) {
+  document.getElementById('save-button').addEventListener('click', () => {
+    const agent = document.getElementById('agent').value;
+    const promotion_code = document.getElementById('promotion_code').value;
+    userLanguage = languageSelect.value;
+    languageSelect.value = userLanguage;
+    chrome.storage.sync.set({agent: agent, promotion_code: promotion_code, language: userLanguage}, () => {
+        chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+        chrome.tabs.reload(tabs[0].id);
+        });
+    });
+
   });
+}
 
-});
-
-languageSelect.addEventListener('change', (event) => {
-  loadLanguage(event.target.value);
-  setPreferredLanguage(event.target.value);
-});
+if(languageSelect) {
+  languageSelect.addEventListener('change', (event) => {
+    loadLanguage(event.target.value);
+    setPreferredLanguage(event.target.value);
+  });
+}
 
 function setPreferredLanguage(lang) {
   return chrome.storage.sync.set({language: lang}, () => {

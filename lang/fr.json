@@ -1,0 +1,10 @@
+{
+    "title": "Options de l'Extension",
+    "header": "Configuration",
+    "label_language": "Langue",
+    "label_agent": "Choisissez votre agent préféré",
+    "label_promo_code": "Mettez votre code de promotion, exemple : 45cdbf838f12bf6c",
+    "label_how_to_get_promo_code": "Pour obtenir votre propre code de promotion (vous devez être connecté à votre compte)",
+    "save_button": "Sauvegarder"
+}
+  

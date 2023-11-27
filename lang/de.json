@@ -1,0 +1,9 @@
+{
+    "title": "Erweiterungsoptionen",
+    "header": "Konfiguration",
+    "label_language": "Wähle deine Sprache",
+    "label_agent": "Wähle deinen Lieblingsagenten",
+    "label_promo_code": "Gib hier deinen Aktionscode ein, Beispiel: 45cdbf838f12bf6c",
+    "label_how_to_get_promo_code": "Klicke hier, um deinen eigenen Aktionscode zu erhalten (du musst in deinem Konto angemeldet sein)",
+    "save_button": "Speichern"
+}
