@@ -2,7 +2,12 @@ const main = async () => {
     chrome.storage.sync.get('promotion_code', async function(data) {
         const promotion_code = data.promotion_code || '';
         let elements = document.querySelectorAll('.showalbumheader__gallerysubtitle');
-        const cssbuy_promo_url = transformLink(elements[0].querySelector('a').getAttribute('href'), promotion_code);
+        if (!elements.length) {
+            return;
+        }
+        let link = elements[0].querySelector('a');
+        if (!link) return;
+        const cssbuy_promo_url = transformLink(link.getAttribute('href'), promotion_code);
         elements.forEach((element) => {
                 let links = element.querySelectorAll('a');
                 links.forEach((link) => {
@@ -100,4 +105,3 @@ const transformWeidianLink = (link, promotion_code) => {
 
     return transormed_link;
 }
-  

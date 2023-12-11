@@ -5,5 +5,6 @@
     "label_agent": "Elije a tu agente favorito",
     "label_promo_code": "Pon aquí tu código de promoción, ejemplo: 45cdbf838f12bf6c",
     "label_how_to_get_promo_code": "Haz clic aquí para obtener tu propio código de promoción (debes estar registrado en tu cuenta)",
-    "save_button": "Guardar"
+    "save_button": "Guardar",
+    "label_your_url": "Transforma tu enlace"
 }
